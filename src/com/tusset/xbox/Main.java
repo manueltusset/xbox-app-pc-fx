@@ -5,7 +5,9 @@
  */
 package com.tusset.xbox;
 
+import com.tusset.xbox.util.Util;
 import java.net.URL;
+import java.util.HashMap;
 import javafx.application.Application;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXMLLoader;
@@ -47,8 +49,11 @@ public class Main extends Application {
         stage.setFullScreen(true);
         stage.setMaximized(true);
         stage.setResizable(false);
-        stage.setWidth(1920);
-        stage.setHeight(1080);
+        
+        HashMap<String, Double> hash = Util.getDimensionScreen();
+        
+        stage.setWidth(hash.get("width"));
+        stage.setHeight(hash.get("height"));
         stage.show();
         
         webEngine.load(url.toString());
